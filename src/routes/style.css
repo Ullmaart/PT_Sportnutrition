@@ -1,0 +1,578 @@
+/* Globale Einstellungen */
+:root {
+    --bg-light: #f1f5f9;
+    --text-dark: #0f172a;
+    --text-muted: #64748b;
+    --accent-orange: #f97316;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg-light);
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Navigation Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.8); /* Durchscheinend */
+    backdrop-filter: blur(10px); /* Der moderne Blur-Effekt */
+    border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    height: 70px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+.nav-link:hover {
+    color: #3b82f6; /* Deine Akzentfarbe */
+}
+
+/* Der kleine Strich beim Hover */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.cta-button {
+    background: #0f172a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+}
+
+/* Padding für den Main-Content, damit er nicht unter der Nav verschwindet */
+main {
+    padding-top: 20px;
+}
+
+/* Page Layout */
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-header h1 {
+    font-size: 2.5rem;
+    color: var(--text-dark);
+    margin-bottom: 5px;
+}
+
+.page-header p {
+    color: var(--text-muted);
+}
+
+/* Das Grid-System für die Karten */
+.nutrition-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Der Frame (Dein gewünschter Abstandshalter) */
+.frame {
+    width: 33.333%; /* 3 Karten pro Reihe */
+    padding: 15px;  /* HIER ist der Abstand zwischen den Karten */
+    box-sizing: border-box;
+}
+
+/* Responsive: Auf Tablets nur 2 Karten */
+@media (max-width: 900px) {
+    .frame { width: 50%; }
+}
+
+/* Responsive: Auf Handys nur 1 Karte */
+@media (max-width: 600px) {
+    .frame { width: 100%; }
+}
+
+/* Die Karte selbst */
+.nutrition-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nutrition-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.card-title h3 {
+    margin: 0 0 20px 0;
+    font-size: 1.4rem;
+    color: var(--text-dark);
+}
+
+/* Kalorien-Anzeige */
+.energy-badge {
+    background: #fff7ed;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.kcal-value {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--accent-orange);
+}
+
+.kcal-unit {
+    color: var(--accent-orange);
+    font-weight: 500;
+}
+
+/* Nährwert-Leisten */
+.stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+}
+
+.stat-number {
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+}
+
+.progress-bg {
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-bar { height: 100%; border-radius: 3px; }
+.protein { background: #10b981; }
+.carbs { background: #3b82f6; }
+.fat { background: #f59e0b; }
+
+/* Sport spezifische Farben */
+.sport-theme {
+    --accent-sport: #6366f1; /* Ein schönes Indigo-Blau */
+    --bg-sport: #fdfdff;
+}
+
+.sport-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: all 0.3s ease;
+    border: 1px solid #f1f5f9;
+}
+
+.sport-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent-sport);
+    box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.origin-tag {
+    background: #eef2ff;
+    color: var(--accent-sport);
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.sport-icon {
+    font-size: 1.2rem;
+}
+
+.sport-content h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.5rem;
+    color: #1e293b;
+}
+
+.description {
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Schneidet Text nach 3 Zeilen ab */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.action-btn {
+    width: 100%;
+    background: var(--accent-sport);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.action-btn:hover {
+    background: #4f46e5;
+}
+
+/* Styling für den Bild-Container in der Sport-Card */
+.card-image-container {
+    width: 100%;
+    height: 180px; /* Feste Höhe für ein einheitliches Grid */
+    overflow: hidden; /* Schneidet überstehende Bildteile ab */
+    border-radius: 12px; /* Abgerundete Ecken für das Bild */
+    margin-bottom: 15px; /* Abstand zum Header/Titel */
+}
+
+.card-image {
+    width: 100%;
+    height: 100%;
+    /* WICHTIG: Das Bild wird passend zugeschnitten, nicht gequetscht */
+    object-fit: cover; 
+    /* Optional: Zentriert das Bild im Container */
+    object-position: center; 
+}
+
+/* Home Styles */
+.home-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.hero {
+    text-align: center;
+    padding: 80px 0;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.badge-new {
+    background: #eef2ff;
+    color: #4f46e5;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    line-height: 1.1;
+    color: #0f172a;
+    margin-bottom: 24px;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #64748b;
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.hero-btns {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-primary {
+    background: #4f46e5;
+    color: white;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s;
+}
+
+.btn-secondary {
+    background: white;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+    padding: 14px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover { transform: scale(1.05); }
+.btn-secondary:hover { background: #f8fafc; }
+
+/* Features Grid auf der Home */
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover { transform: translateY(-10px); }
+
+.f-icon { font-size: 3rem; margin-bottom: 20px; }
+
+.f-link {
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 700;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .features { grid-template-columns: 1fr; }
+}
+
+
+/* Add Button */
+.add-btn {
+    background: #10b981;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 15px;
+    transition: transform 0.2s;
+}
+
+.add-btn:hover {
+    transform: scale(1.05);
+}
+
+.success-message {
+    margin-top: 15px;
+    color: #10b981;
+    font-weight: bold;
+    background: #d1fae5;
+    padding: 10px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* Modal / Pop-up Styling */
+.modal {
+    border: none;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    background: white;
+    max-width: 500px;
+    width: 90%; 
+    margin: auto; 
+    
+    /* --- NEU HINZUGEFÜGT --- */
+    height: fit-content; /* Sagt dem Modal: "Werde nur so hoch wie dein Inhalt!" */
+    max-height: 90vh;    /* Verhindert, dass es oben/unten aus dem Bildschirm ragt */
+    overflow-y: auto;    /* Erlaubt das Scrollen, falls der Bildschirm extrem klein ist */
+}
+
+/* Die Sperrebene im Hintergrund */
+.modal::backdrop {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    padding: 30px;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: #0f172a;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 5px;
+}
+
+.input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.input-group input, .input-group textarea {
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-family: inherit;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.cancel-btn {
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Erzwingt die Sichtbarkeit, wenn das Modal geöffnet ist */
+.modal[open] {
+    display: block !important;
+}
+
+
+/* --- SportCard Footer & Delete Button Styling --- */
+
+/* Wir machen aus dem Footer eine Flexbox, damit die Buttons nebeneinander stehen */
+.card-footer {
+    display: flex;
+    justify-content: space-between; /* Ein Button links, einer rechts */
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px; /* Etwas Abstand zum Text darüber */
+}
+
+/* Styling für den Löschen-Button */
+.delete-btn {
+    background-color: #ef4444; /* Ein klares Warn-Rot */
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626; /* Etwas dunkler beim Hover */
+}
