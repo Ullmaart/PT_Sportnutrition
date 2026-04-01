@@ -1,4 +1,3 @@
-import { MongoClient } from 'mongodb';
 import { DB_URI } from '$env/static/private'; // Lädt die URL aus der .env Datei [cite: 163]
 import { MongoClient, ObjectId } from 'mongodb';
 
