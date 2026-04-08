@@ -1,4 +1,5 @@
 <script>
+import "./style.css";
   let { children } = $props();
 </script>
 
