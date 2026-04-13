@@ -1,10 +1,10 @@
 // src/routes/sport/+page.server.js
-import db from "$lib/server/db.js"; // Importiert unsere neue DB-Datei [cite: 176]
+import { getSports, createSport, deleteSport } from '$lib/server/db'; // Importiert unsere neue DB-Datei [cite: 176]
 
 export async function load() { // [cite: 177]
     return {
         // Ruft die Funktion auf und speichert das Ergebnis in 'sports' [cite: 188]
-        sports: await db.getSports() 
+        sports: await getSports() 
     };
 }
 
@@ -22,7 +22,7 @@ export const actions = {
         };
 
         // Speichert es in der Datenbank
-        await db.createSport(newSport);
+        await createSport(newSport);
 
         // Gibt eine Erfolgsmeldung ans Frontend zurück
         return { success: true };
@@ -33,7 +33,7 @@ export const actions = {
         const id = formData.get('id'); 
 
         // NEU: Wir rufen einfach die Funktion aus deiner db.js auf!
-        await db.deleteSport(id);
+        await deleteSport(id);
 
         return { success: true };
     }
