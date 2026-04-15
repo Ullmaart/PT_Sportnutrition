@@ -46,6 +46,8 @@ export const { handle } = SvelteKitAuth({
         })
     ],
 
+    trustHost: true,
+
     callbacks: {
         async jwt({ token, user }) {
             // 1. Direkt nach dem Login: Packe die Nutzerdaten in das Token
@@ -68,7 +70,11 @@ export const { handle } = SvelteKitAuth({
     session: {
         strategy: 'jwt'
     },
+
     secret: AUTH_SECRET,
+
+    
+
     pages: {
         signIn: '/login'
     }
