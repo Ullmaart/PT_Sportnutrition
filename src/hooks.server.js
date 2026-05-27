@@ -4,6 +4,7 @@ import Credentials from '@auth/sveltekit/providers/credentials';
 import clientPromise from '$lib/server/db';
 import { AUTH_SECRET } from '$env/static/private';
 import bcrypt from 'bcryptjs';
+import { db } from "$lib/server/db";
 
 export const { handle } = SvelteKitAuth({
     // WICHTIG: Die Zeile mit 'adapter: ...' haben wir komplett gelöscht!
@@ -35,12 +36,12 @@ export const { handle } = SvelteKitAuth({
                     return null;
                 }
 
-                console.log("--- LOGIN ERFOLGREICH ---");
                 return {
                     id: user._id.toString(),
                     name: user.firstname, 
                     username: user.username,
-                    email: user.email
+                    email: user.email,
+                    role: user.role
                 };
             }
         })
@@ -49,19 +50,40 @@ export const { handle } = SvelteKitAuth({
     trustHost: true,
 
     callbacks: {
+        // 1. Der Türsteher: Prüft VOR dem Login, ob der Nutzer rein darf
+        async signIn({ user }) {
+            // Die gleiche funktionierende DB-Verbindung wie bei 'authorize' aufbauen:
+            const client = await clientPromise;
+            const db = client.db('pt_sport_nutrition');
+            
+            // Nutzer in der Datenbank suchen (anhand der E-Mail)
+            const existingUser = await db.collection("users").findOne({ email: user.email });
+
+            // Prüfen, ob der Nutzer existiert und freigeschaltet ist
+            if (existingUser && existingUser.isApproved === true) {
+                return true; // Login erlauben, weiter zu Schritt 2
+            } else {
+                // Login blockieren und auf eine Info-Seite umleiten
+                return "/freischaltung-ausstehend"; 
+            }
+        },
+
+        // 2. Direkt nach dem erfolgreichen Login: Packe die Nutzerdaten in das Token
         async jwt({ token, user }) {
-            // 1. Direkt nach dem Login: Packe die Nutzerdaten in das Token
             if (user) {
                 token.id = user.id;
                 token.username = user.username;
+                token.role = user.role;
             }
             return token;
         },
+
+        // 3. Bei jedem Seitenaufruf: Gib diese Daten an dein Frontend weiter
         async session({ session, token }) {
-            // 2. Bei jedem Seitenaufruf: Gib diese Daten an dein Frontend weiter
             if (token && session.user) {
                 session.user.id = token.id;
                 session.user.username = token.username;
+                session.user.role = token.role;
             }
             return session;
         }

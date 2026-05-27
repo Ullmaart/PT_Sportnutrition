@@ -1,0 +1,36 @@
+/* ========================================== */
+/* RECHTLICHES: SCHLICHTES DESIGN             */
+/* ========================================== */
+
+.legal-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 20px; /* Kein Hintergrund, kein Schatten mehr */
+    line-height: 1.7;
+    color: #334155;
+}
+
+/* Fix für den ID-Sprung unter die Navbar */
+section {
+    scroll-margin-top: 100px; /* Passt sich an die Höhe deiner Navbar an */
+    margin-bottom: 3rem;
+}
+
+h2 {
+    color: #0f172a;
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #1e293b;
+}
+
+p {
+    margin-bottom: 1rem;
+    color: #0f172a;
+}

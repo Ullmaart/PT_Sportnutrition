@@ -1,0 +1,569 @@
+/* --- CSS Variablen --- */
+:root {
+    --pt-purple: #7c2ae8;
+    --pt-orange: #ff7e00;
+    --pt-gradient: linear-gradient(135deg, var(--pt-purple) 0%, var(--pt-orange) 100%);
+
+    --pt-surface: #ffffff;
+    --pt-text-main: #1f2937;
+    --pt-text-light: #6b7280;
+    --pt-border: #e5e7eb;
+
+    --font-main: 'Inter', system-ui, sans-serif;
+}
+
+/* --- Layout --- */
+.unified-tracker {
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background: var(--pt-surface);
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    font-family: var(--font-main);
+    color: var(--pt-text-main);
+    min-height: 550px;
+    transition: grid-template-columns 0.3s ease;
+}
+
+.unified-tracker.input-hidden {
+    grid-template-columns: 60px 1fr;
+}
+
+/* --- Linkes Panel (Eingabe) --- */
+.input-panel {
+    padding: 2.5rem;
+    border-right: 1px solid var(--pt-border);
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.btn-toggle-close {
+    background: transparent;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--pt-text-light);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-toggle-close:hover {
+    color: var(--pt-purple);
+}
+
+/* --- Formularelemente & Datepicker --- */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+
+.panel-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--pt-text-light);
+    margin-bottom: 0.5rem;
+}
+
+.date-picker {
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--pt-border);
+    border-radius: 8px;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--pt-text-main);
+    background: white;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.date-picker:focus {
+    border-color: var(--pt-purple);
+}
+
+/* --- Gewicht Controls --- */
+.weight-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.weight-display-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.main-weight {
+    font-size: 1.75rem;
+    font-weight: 800;
+}
+
+.weight-delta {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+}
+
+.weight-delta.negative {
+    color: #ef4444;
+}
+
+.weight-delta.positive {
+    color: #3b82f6;
+}
+
+/* --- Gradient Buttons --- */
+.btn-grad {
+    background: var(--pt-gradient);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-grad:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+}
+
+.btn-adjust {
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    font-weight: 700;
+    box-shadow: 0 4px 6px -1px rgba(255, 126, 0, 0.2);
+}
+
+.btn-confirm {
+    width: 100%;
+    border-radius: 9999px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px -2px rgba(124, 42, 232, 0.3);
+}
+
+/* --- Finales Gewicht (Gelbe Box) --- */
+.final-weight-box {
+    background-color: #fef9c3;
+    color: #854d0e;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1.5rem 0 2rem 0;
+    border: 1px solid #fde047;
+}
+
+.final-weight {
+    font-size: 2.25rem;
+    font-weight: 800;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* --- Ausgeblendeter Zustand --- */
+.input-collapsed-box {
+    background: var(--pt-gradient);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.input-collapsed-box:hover {
+    opacity: 0.9;
+}
+
+.collapsed-icon {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.collapsed-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* --- Rechtes Panel (Historie) --- */
+.history-panel {
+    padding: 2.5rem;
+    background: var(--pt-surface);
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-top: 0;
+    margin-bottom: 2rem;
+}
+
+.history-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.history-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 0;
+    border-bottom: 1px dashed var(--pt-border);
+    font-size: 1.1rem;
+    min-height: 4rem;
+    /* Verhindert Springen beim Wechseln in den Edit-Mode */
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+.history-item .date {
+    color: var(--pt-text-light);
+    font-weight: 500;
+}
+
+.history-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.history-item .weight {
+    font-weight: 700;
+}
+
+/* --- Interaktive Buttons für Einträge --- */
+.item-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 6px;
+    transition: background 0.2s, color 0.2s;
+    line-height: 1;
+}
+
+.btn-edit {
+    color: var(--pt-text-light);
+}
+
+.btn-edit:hover {
+    background: #f3f4f6;
+    color: var(--pt-purple);
+}
+
+.btn-delete {
+    color: #f87171;
+}
+
+.btn-delete:hover {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.btn-save {
+    color: #4ade80;
+    font-weight: bold;
+}
+
+.btn-save:hover {
+    background: #dcfce7;
+    color: #16a34a;
+}
+
+.btn-cancel {
+    color: var(--pt-text-light);
+}
+
+.btn-cancel:hover {
+    background: #f3f4f6;
+    color: var(--pt-text-main);
+}
+
+/* --- Inline Edit Layout --- */
+.edit-row {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.inline-edit {
+    padding: 0.4rem 0.75rem;
+    font-size: 1rem;
+    max-width: 160px;
+}
+
+.inline-weight-input {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.unit-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--pt-text-light);
+}
+
+/* --- Responsive Media Queries --- */
+@media (max-width: 900px) {
+
+    .unified-tracker,
+    .unified-tracker.input-hidden {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+        min-height: auto;
+    }
+
+    .input-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--pt-border);
+        padding: 1.5rem;
+    }
+
+    .history-panel {
+        padding: 1.5rem;
+    }
+
+    .input-collapsed-box {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .collapsed-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+
+    .edit-row {
+        flex-wrap: wrap;
+    }
+}
+
+
+.history-row-grid {
+    display: grid;
+    /* 5 Spalten: Datum (100px), Gewicht (90px), Ziel (Restlicher Platz), Trend (80px), Buttons (80px) */
+    grid-template-columns: 100px 90px 1fr 80px 80px;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 1rem;
+}
+
+.edit-goal-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    width: 100%;
+    align-items: center;
+}
+
+.edit-goal-form input {
+    flex: 1;
+    min-width: 80px;
+}
+
+.goal-col {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.trend-col {
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+.history-item {
+    padding: 1rem 0;
+}
+
+/* Mobile Anpassung: Umbruch auf 2 Spalten auf kleinen Bildschirmen */
+@media (max-width: 768px) {
+    .history-row-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+    .goal-col {
+        grid-column: span 2;
+    }
+    .trend-col {
+        text-align: left;
+    }
+}
+
+.color-picker-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 0.5rem;
+}
+
+.color-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    /* Optional: Ein leichter Schatten macht die Pastelltöne besser sichtbar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+}
+
+.color-dot:hover {
+    transform: scale(1.15);
+}
+
+.color-dot.selected {
+    transform: scale(1.15);
+    /* Ein grauer Rahmen zeigt an, welche Farbe aktiv ist */
+    border-color: #4b5563; 
+}
+
+/* ========================================== */
+/* FILTER-BAR & PAGINATION                    */
+/* ========================================== */
+
+.filter-bar {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    align-items: center;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+    min-width: 140px;
+}
+
+.filter-group label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-input {
+    border: 2px solid transparent;
+    border-radius: 8px;
+    padding: 0.5rem;
+    color: #322842;
+    font-size: 0.9rem;
+    outline: none;
+    
+    /* Der Gradienten-Rahmen Trick mit deutlich hellerem Grau (#374151) für innen */
+    background: 
+        linear-gradient(#f4f4f4, #f4f4f4) padding-box, 
+        linear-gradient(to right, #f97316, #a855f7) border-box; 
+    
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.filter-input:focus {
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4); 
+    transform: translateY(-1px); 
+}
+
+/* Auch das Dropdown-Menü bekommt das neue, hellere Grau */
+.select-input option {
+    background: #374151; 
+    color: #fff;
+}
+
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.pagination-info {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #9ca3af;
+}
+
+.pagination-controls button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.manual-weight-input {
+    background: transparent;
+    border: none;
+    /* Dunkelgraue, gestrichelte Linie statt einer weißen */
+    border-bottom: 2px dashed #9ca3af; 
+    /* Dunkle Schriftfarbe statt weiß */
+    color: #1f2937; 
+    text-align: center;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.manual-weight-input:focus {
+    /* Deine Primärfarbe als durchgehende Linie beim Reinklicken */
+    border-bottom: 2px solid var(--pt-purple); 
+}
+
+/* Pfeile verstecken (bleibt gleich) */
+.manual-weight-input::-webkit-outer-spin-button,
+.manual-weight-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.manual-weight-input[type=number] {
+    -moz-appearance: textfield;
+}

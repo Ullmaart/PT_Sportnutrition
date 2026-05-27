@@ -1,0 +1,373 @@
+/* ========================================== */
+/* BENUTZERVERWALTUNG (ADMIN)                 */
+/* ========================================== */
+
+.admin-container {
+    max-width: 1000px;
+    margin: 4rem auto 6rem auto;
+    padding: 0 1.5rem;
+}
+
+.header-section {
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    padding-top: 5px;
+}
+
+/* Leerer Zustand (Keine Nutzer) */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    border: 2px dashed #eaeaea;
+}
+
+.empty-state svg {
+    color: #22c55e;
+    margin-bottom: 1rem;
+}
+
+.empty-state h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #666;
+}
+
+/* Tabellen-Design */
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    border: 1px solid #eaeaea;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.user-table th,
+.user-table td {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.user-table th {
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #444;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+}
+
+.user-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.user-table tbody tr:hover {
+    background-color: #fafafa;
+}
+
+.action-column {
+    text-align: right;
+}
+
+/* ========================================== */
+/* STATUS BADGES & ACTION BUTTONS             */
+/* ========================================== */
+
+.status-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.approved {
+    background-color: #d1fae5;
+    color: #059669;
+}
+
+.status-badge.pending {
+    background-color: #ffedd5;
+    color: #ea580c;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* Verhindert, dass die <form> Elemente das Grid sprengen */
+.action-buttons form {
+    margin: 0;
+}
+
+/* Freischalten Button */
+.btn-approve {
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-approve:hover {
+    background-color: #e66000;
+}
+
+.btn-approve:active {
+    transform: scale(0.95);
+}
+
+/* Sperren Button */
+.btn-suspend {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    border: 1px solid #d1d5db;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-suspend:hover {
+    background-color: #e5e7eb;
+    color: #1f2937;
+}
+
+.btn-suspend:active {
+    transform: scale(0.95);
+}
+
+/* Löschen Button */
+.btn-delete {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-delete:hover {
+    background-color: #f87171;
+    color: white;
+    border-color: #f87171;
+}
+
+.btn-delete:active {
+    transform: scale(0.95);
+}
+
+/* Gefahr-Button im PopUp (Rot) */
+.save-btn.btn-danger {
+    background-color: #ef4444;
+    /* Rot statt dem Standard-Lila */
+}
+
+.save-btn.btn-danger:hover {
+    background-color: #dc2626;
+}
+
+/* ========================================== */
+/* DARK MODE FIX                              */
+/* ========================================== */
+@media (prefers-color-scheme: dark) {
+
+    .subtitle,
+    .empty-state p {
+        color: #a0a0a0 !important;
+    }
+
+    .empty-state {
+        background-color: rgba(255, 255, 255, 0.02);
+        border-color: #333;
+    }
+
+    .table-wrapper {
+        background: #1e293b;
+        border-color: #333;
+        box-shadow: none;
+    }
+
+    .user-table th {
+        background-color: #0f172a;
+        color: #94a3b8 !important;
+        border-bottom-color: #333;
+    }
+
+    .user-table td,
+    .user-table td strong {
+        color: #f1f5f9 !important;
+        border-bottom-color: #333 !important;
+    }
+
+    .user-table tbody tr:hover {
+        background-color: #334155;
+    }
+
+    /* Dark Mode Badges */
+    .status-badge.approved {
+        background-color: rgba(5, 150, 105, 0.2);
+        color: #34d399;
+    }
+
+    .status-badge.pending {
+        background-color: rgba(234, 88, 12, 0.2);
+        color: #fb923c;
+    }
+
+    /* Dark Mode Buttons */
+    .btn-approve {
+        color: #fff !important;
+    }
+
+    .btn-suspend {
+        background-color: transparent;
+        color: #94a3b8;
+        border-color: #475569;
+    }
+
+    .btn-suspend:hover {
+        background-color: #475569;
+        color: #f8fafc;
+    }
+
+    .btn-delete {
+        background-color: transparent;
+        border-color: #ef4444;
+    }
+
+    .save-btn.btn-danger {
+        background-color: #ef4444;
+    }
+
+    .save-btn.btn-danger:hover {
+        background-color: #dc2626;
+    }
+
+    .save-btn.btn-warning {
+        background-color: #ea580c;
+    }
+
+    /* Orange für Sperren */
+    .save-btn.btn-warning:hover {
+        background-color: #c2410c;
+    }
+
+    .save-btn.btn-success {
+        background-color: #10b981;
+    }
+
+    /* Grün für Freigeben */
+    .save-btn.btn-success:hover {
+        background-color: #059669;
+    }
+
+    .modal {
+        background: #1e293b;
+        border: 1px solid #334155;
+    }
+
+    .modal-content p {
+        color: #94a3b8 !important;
+    }
+
+    .cancel-btn {
+        background: transparent;
+        color: #475569;
+        border-color: #475569;
+    }
+
+    .cancel-btn:hover {
+        background: #334155;
+        color: #f6f8fc;
+    }
+}
+
+
+/* ========================================== */
+/* MOBILE ANSICHT (SMARTPHONES)               */
+/* ========================================== */
+@media (max-width: 640px) {
+    .user-table thead {
+        display: none;
+    }
+
+    .user-table tr {
+        display: block;
+        padding: 1rem;
+        border-bottom: 4px solid #eaeaea;
+    }
+
+    .user-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    .user-table td:last-child {
+        border-bottom: none;
+    }
+
+    .user-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #666;
+        margin-right: 1rem;
+    }
+
+    .action-column {
+        text-align: left;
+        margin-top: 0.5rem;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .user-table tr {
+            border-bottom-color: #1a1a1a;
+        }
+
+        .user-table td {
+            border-bottom-color: #333;
+        }
+
+        .user-table td::before {
+            color: #94a3b8;
+        }
+    }
+}

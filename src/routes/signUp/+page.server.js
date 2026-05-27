@@ -37,7 +37,8 @@ export const actions = {
             username,
             password: hashedPassword,
             reason,
-            createdAt: new Date()
+            createdAt: new Date(),
+            isApproved: false // Standardmäßig auf "nicht freigeschaltet" setzen
         });
 
         // Nach Erfolg direkt zum Login schicken

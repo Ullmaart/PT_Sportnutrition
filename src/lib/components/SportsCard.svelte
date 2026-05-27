@@ -1,10 +1,6 @@
-<!-- Kommentar für eine neue Version 1.0 
-    Github Testing!
--->
 <script>
-    import { enhance } from "$app/forms";
-    // Wir nehmen ein einzelnes Sport-Item entgegen
-    let { item } = $props();
+    // NEU: Wir nehmen eine Funktion 'onDelete' als Prop entgegen
+    let { item, isAdmin = false, onDelete } = $props();
 </script>
 
 <div class="frame">
@@ -25,26 +21,11 @@
         <div class="card-footer">
             <a href="/sport/{item._id}" class="action-btn">Mehr erfahren</a>
 
-            <form
-                method="POST"
-                action="?/delete"
-                use:enhance={({ cancel }) => {
-                    // 1. Das hier passiert VOR dem Senden an den Server
-                    if (
-                        !confirm(`Möchtest du "${item.name}" wirklich löschen?`)
-                    ) {
-                        cancel();
-                    }
-
-                    // 2. Das hier passiert NACHDEM der Server geantwortet hat
-                    return async ({ update }) => {
-                        await update(); // <-- DAS ist die Magie! Lädt die Daten im Hintergrund neu, ohne Reload.
-                    };
-                }}
-            >
-                <input type="hidden" name="id" value={item._id} />
-                <button type="submit" class="delete-btn">Löschen</button>
-            </form>
+            {#if isAdmin}
+                <button type="button" class="delete-btn" onclick={() => onDelete(item._id, item.name)}>
+                    Löschen
+                </button>
+            {/if}
         </div>
     </div>
 </div>

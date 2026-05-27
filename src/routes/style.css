@@ -6,10 +6,19 @@
     --accent-orange: #f97316;
 }
 
+html, body {
+    margin: 0;
+    min-height: 100%;
+}
+
 body {
     margin: 0;
+    min-height: 100vh;
     background-color: var(--bg-light);
     font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+    display: flex;
+    flex-direction: column;
 }
 
 /* Navigation Styles */
@@ -17,8 +26,10 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.8); /* Durchscheinend */
-    backdrop-filter: blur(10px); /* Der moderne Blur-Effekt */
+    background: rgba(255, 255, 255, 0.8);
+    /* Durchscheinend */
+    backdrop-filter: blur(10px);
+    /* Der moderne Blur-Effekt */
     border-bottom: 1px solid rgba(226, 232, 240, 0.8);
     height: 70px;
     display: flex;
@@ -33,6 +44,10 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    a{
+        text-decoration: none;
+    }
 }
 
 .logo {
@@ -59,7 +74,8 @@ body {
 }
 
 .nav-link:hover {
-    color: #3b82f6; /* Deine Akzentfarbe */
+    color: #3b82f6;
+    /* Deine Akzentfarbe */
 }
 
 /* Der kleine Strich beim Hover */
@@ -97,6 +113,7 @@ body {
 /* Padding für den Main-Content, damit er nicht unter der Nav verschwindet */
 main {
     padding-top: 20px;
+    flex: 1;
 }
 
 /* Page Layout */
@@ -130,19 +147,25 @@ main {
 
 /* Der Frame (Dein gewünschter Abstandshalter) */
 .frame {
-    width: 33.333%; /* 3 Karten pro Reihe */
-    padding: 15px;  /* HIER ist der Abstand zwischen den Karten */
+    width: 33.333%;
+    /* 3 Karten pro Reihe */
+    padding: 15px;
+    /* HIER ist der Abstand zwischen den Karten */
     box-sizing: border-box;
 }
 
 /* Responsive: Auf Tablets nur 2 Karten */
 @media (max-width: 900px) {
-    .frame { width: 50%; }
+    .frame {
+        width: 50%;
+    }
 }
 
 /* Responsive: Auf Handys nur 1 Karte */
 @media (max-width: 600px) {
-    .frame { width: 100%; }
+    .frame {
+        width: 100%;
+    }
 }
 
 /* Die Karte selbst */
@@ -150,13 +173,13 @@ main {
     background: #ffffff;
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nutrition-card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
 }
 
 .card-title h3 {
@@ -218,14 +241,27 @@ main {
     overflow: hidden;
 }
 
-.progress-bar { height: 100%; border-radius: 3px; }
-.protein { background: #10b981; }
-.carbs { background: #3b82f6; }
-.fat { background: #f59e0b; }
+.progress-bar {
+    height: 100%;
+    border-radius: 3px;
+}
+
+.protein {
+    background: #10b981;
+}
+
+.carbs {
+    background: #3b82f6;
+}
+
+.fat {
+    background: #f59e0b;
+}
 
 /* Sport spezifische Farben */
 .sport-theme {
-    --accent-sport: #6366f1; /* Ein schönes Indigo-Blau */
+    --accent-sport: #6366f1;
+    /* Ein schönes Indigo-Blau */
     --bg-sport: #fdfdff;
 }
 
@@ -233,7 +269,7 @@ main {
     background: #ffffff;
     border-radius: 20px;
     padding: 24px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -281,7 +317,8 @@ main {
     line-height: 1.5;
     margin-bottom: 20px;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Schneidet Text nach 3 Zeilen ab */
+    -webkit-line-clamp: 3;
+    /* Schneidet Text nach 3 Zeilen ab */
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -306,19 +343,23 @@ main {
 /* Styling für den Bild-Container in der Sport-Card */
 .card-image-container {
     width: 100%;
-    height: 180px; /* Feste Höhe für ein einheitliches Grid */
-    overflow: hidden; /* Schneidet überstehende Bildteile ab */
-    border-radius: 12px; /* Abgerundete Ecken für das Bild */
-    margin-bottom: 15px; /* Abstand zum Header/Titel */
+    height: 180px;
+    /* Feste Höhe für ein einheitliches Grid */
+    overflow: hidden;
+    /* Schneidet überstehende Bildteile ab */
+    border-radius: 12px;
+    /* Abgerundete Ecken für das Bild */
+    margin-bottom: 15px;
+    /* Abstand zum Header/Titel */
 }
 
 .card-image {
     width: 100%;
     height: 100%;
     /* WICHTIG: Das Bild wird passend zugeschnitten, nicht gequetscht */
-    object-fit: cover; 
+    object-fit: cover;
     /* Optional: Zentriert das Bild im Container */
-    object-position: center; 
+    object-position: center;
 }
 
 /* Home Styles */
@@ -392,8 +433,13 @@ main {
     transition: background 0.2s;
 }
 
-.btn-primary:hover { transform: scale(1.05); }
-.btn-secondary:hover { background: #f8fafc; }
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+.btn-secondary:hover {
+    background: #f8fafc;
+}
 
 /* Features Grid auf der Home */
 .features {
@@ -407,13 +453,18 @@ main {
     background: white;
     padding: 40px;
     border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
     transition: transform 0.3s ease;
 }
 
-.feature-card:hover { transform: translateY(-10px); }
+.feature-card:hover {
+    transform: translateY(-10px);
+}
 
-.f-icon { font-size: 3rem; margin-bottom: 20px; }
+.f-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
 
 .f-link {
     color: #4f46e5;
@@ -425,13 +476,25 @@ main {
 
 /* Animation */
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    .features { grid-template-columns: 1fr; }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
 }
 
 
@@ -468,16 +531,19 @@ main {
     border: none;
     border-radius: 20px;
     padding: 0;
-    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
     background: white;
     max-width: 500px;
-    width: 90%; 
-    margin: auto; 
-    
+    width: 90%;
+    margin: auto;
+
     /* --- NEU HINZUGEFÜGT --- */
-    height: fit-content; /* Sagt dem Modal: "Werde nur so hoch wie dein Inhalt!" */
-    max-height: 90vh;    /* Verhindert, dass es oben/unten aus dem Bildschirm ragt */
-    overflow-y: auto;    /* Erlaubt das Scrollen, falls der Bildschirm extrem klein ist */
+    height: fit-content;
+    /* Sagt dem Modal: "Werde nur so hoch wie dein Inhalt!" */
+    max-height: 90vh;
+    /* Verhindert, dass es oben/unten aus dem Bildschirm ragt */
+    overflow-y: auto;
+    /* Erlaubt das Scrollen, falls der Bildschirm extrem klein ist */
 }
 
 /* Die Sperrebene im Hintergrund */
@@ -514,7 +580,8 @@ main {
     color: #64748b;
 }
 
-.input-group input, .input-group textarea {
+.input-group input,
+.input-group textarea {
     padding: 10px;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
@@ -556,15 +623,18 @@ main {
 /* Wir machen aus dem Footer eine Flexbox, damit die Buttons nebeneinander stehen */
 .card-footer {
     display: flex;
-    justify-content: space-between; /* Ein Button links, einer rechts */
+    justify-content: space-between;
+    /* Ein Button links, einer rechts */
     align-items: center;
     gap: 10px;
-    margin-top: 15px; /* Etwas Abstand zum Text darüber */
+    margin-top: 15px;
+    /* Etwas Abstand zum Text darüber */
 }
 
 /* Styling für den Löschen-Button */
 .delete-btn {
-    background-color: #ef4444; /* Ein klares Warn-Rot */
+    background-color: #ef4444;
+    /* Ein klares Warn-Rot */
     color: white;
     border: none;
     padding: 8px 16px;
@@ -576,97 +646,110 @@ main {
 }
 
 .delete-btn:hover {
-    background-color: #dc2626; /* Etwas dunkler beim Hover */
+    background-color: #dc2626;
+    /* Etwas dunkler beim Hover */
 }
 
 .logo-image {
-  height: 2em; /* Passt die Höhe an die Textgröße an */
-  width: auto;   /* Behält die Proportionen bei */
-  vertical-align: middle; /* Zentriert das Bild vertikal zum Text */
-  margin-right: 8px; /* Etwas Abstand zum Text "FitTrack" */
+    height: 2em;
+    /* Passt die Höhe an die Textgröße an */
+    width: auto;
+    /* Behält die Proportionen bei */
+    vertical-align: middle;
+    /* Zentriert das Bild vertikal zum Text */
+    margin-right: 8px;
+    /* Etwas Abstand zum Text "FitTrack" */
 }
 
 
-  /* Wrapper mit weichem, hellgrauem Hintergrund */
-  .login-wrapper {
+/* Wrapper mit weichem, hellgrauem Hintergrund */
+.login-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 80px);
-    background-color: #f4f6f8; /* Helles, freundliches Grau */
+    background-color: #f4f6f8;
+    /* Helles, freundliches Grau */
     padding: 20px;
     font-family: system-ui, -apple-system, sans-serif;
-  }
+}
 
-  /* Weiße Login-Box mit weichem Schatten */
-  .login-card {
+/* Weiße Login-Box mit weichem Schatten */
+.login-card {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); /* Sanfterer Schatten für Light Mode */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    /* Sanfterer Schatten für Light Mode */
     width: 100%;
     max-width: 420px;
     border: 1px solid #eaeaea;
-  }
+}
 
-  .login-header {
+.login-header {
     text-align: center;
     margin-bottom: 32px;
-  }
+}
 
-  .login-logo {
+.login-logo {
     height: 100px;
     margin-bottom: 16px;
-  }
+}
 
-  .login-title {
-    color: #1a1a1a; /* Dunkles Grau/Schwarz für gute Lesbarkeit */
+.login-title {
+    color: #1a1a1a;
+    /* Dunkles Grau/Schwarz für gute Lesbarkeit */
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 8px 0;
-  }
+}
 
-  .login-subtitle {
-    color: #666666; /* Mittleres Grau */
+.login-subtitle {
+    color: #666666;
+    /* Mittleres Grau */
     font-size: 14px;
     margin: 0;
-  }
+}
 
-  /* Formular-Elemente */
-  .input-group {
+/* Formular-Elemente */
+.input-group {
     margin-bottom: 20px;
-  }
+}
 
-  .input-group label {
+.input-group label {
     display: block;
-    color: #4a4a4a; /* Kräftiges Grau für Labels */
+    color: #4a4a4a;
+    /* Kräftiges Grau für Labels */
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
-  }
+}
 
-  .input-group input {
+.input-group input {
     width: 100%;
     padding: 14px 16px;
-    background-color: #fafafa; /* Sehr helles Grau für die Felder */
+    background-color: #fafafa;
+    /* Sehr helles Grau für die Felder */
     border: 1px solid #cccccc;
     border-radius: 8px;
-    color: #1a1a1a; /* Dunkler Text in den Feldern */
+    color: #1a1a1a;
+    /* Dunkler Text in den Feldern */
     font-size: 16px;
     box-sizing: border-box;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  }
+}
 
-  /* Glow-Effekt beim Anklicken der Felder (behält deine Markenfarben) */
-  .input-group input:focus {
+/* Glow-Effekt beim Anklicken der Felder (behält deine Markenfarben) */
+.input-group input:focus {
     outline: none;
     border-color: #FF8C00;
-    background-color: #ffffff; /* Wird reinweiß beim Anklicken */
+    background-color: #ffffff;
+    /* Wird reinweiß beim Anklicken */
     box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
-  }
+}
 
-  /* Anpassung für den Anmelde-Button (bleibt gleich, knallt jetzt aber mehr) */
-  .login-submit {
+/* Anpassung für den Anmelde-Button (bleibt gleich, knallt jetzt aber mehr) */
+.login-submit {
     width: 100%;
     margin-top: 12px;
     padding: 14px;
@@ -679,41 +762,44 @@ main {
     font-weight: bold;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.1s ease;
-  }
+}
 
-  .login-submit:hover {
+.login-submit:hover {
     opacity: 0.9;
-  }
+}
 
-  .login-submit:active {
-    transform: scale(0.98); /* Kleiner Klick-Effekt */
-  }
+.login-submit:active {
+    transform: scale(0.98);
+    /* Kleiner Klick-Effekt */
+}
 
-  /* Footer-Links */
-  .login-footer {
+/* Footer-Links */
+.login-footer {
     margin-top: 28px;
     text-align: center;
     font-size: 14px;
     color: #666666;
-  }
+}
 
-  .login-footer a {
-    color: #FF8C00; /* Setzt die Links in deinem Orange */
+.login-footer a {
+    color: #FF8C00;
+    /* Setzt die Links in deinem Orange */
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-  }
+}
 
-  .login-footer a:hover {
-    color: #8E44AD; /* Hover-Effekt in deinem Lila */
-  }
+.login-footer a:hover {
+    color: #8E44AD;
+    /* Hover-Effekt in deinem Lila */
+}
 
-  .login-footer p {
+.login-footer p {
     margin-top: 16px;
-  }
+}
 
-  /* Grund-Layout (identisch zum Login) */
-  .auth-wrapper {
+/* Grund-Layout (identisch zum Login) */
+.auth-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -721,67 +807,69 @@ main {
     background-color: #f4f6f8;
     padding: 20px;
     font-family: system-ui, -apple-system, sans-serif;
-  }
+}
 
-  .auth-card {
+.auth-card {
     background-color: #ffffff;
     padding: 40px;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     width: 100%;
-    max-width: 500px; /* Etwas breiter als Login wegen der Textarea */
+    max-width: 500px;
+    /* Etwas breiter als Login wegen der Textarea */
     border: 1px solid #eaeaea;
-  }
+}
 
-  .auth-header {
+.auth-header {
     text-align: center;
     margin-bottom: 32px;
-  }
+}
 
-  .auth-logo {
+.auth-logo {
     height: 70px;
     margin-bottom: 16px;
-  }
+}
 
-  .auth-title {
+.auth-title {
     color: #1a1a1a;
     font-size: 24px;
     font-weight: 700;
     margin: 0 0 8px 0;
-  }
+}
 
-  .auth-subtitle {
+.auth-subtitle {
     color: #666666;
     font-size: 14px;
     margin: 0;
-  }
+}
 
-  /* Formular-Elemente */
-  .input-row {
+/* Formular-Elemente */
+.input-row {
     display: flex;
-    gap: 16px; /* Abstand zwischen Vor- und Nachname */
-  }
+    gap: 16px;
+    /* Abstand zwischen Vor- und Nachname */
+}
 
-  /* Nimmt in der Reihe gleich viel Platz ein */
-  .input-row .input-group {
+/* Nimmt in der Reihe gleich viel Platz ein */
+.input-row .input-group {
     flex: 1;
-  }
+}
 
-  .input-group {
+.input-group {
     margin-bottom: 20px;
-  }
+}
 
-  .input-group label {
+.input-group label {
     display: block;
     color: #4a4a4a;
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
-  }
+}
 
-  /* Styling für input UND textarea */
-  .input-group input,
-  .input-group textarea {
+/* Styling für input UND textarea */
+.input-group input,
+.input-group textarea {
     width: 100%;
     padding: 14px 16px;
     background-color: #fafafa;
@@ -790,26 +878,28 @@ main {
     color: #1a1a1a;
     font-size: 16px;
     box-sizing: border-box;
-    font-family: inherit; /* Verhindert, dass die Textarea eine andere Schriftart nutzt */
+    font-family: inherit;
+    /* Verhindert, dass die Textarea eine andere Schriftart nutzt */
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-  }
+}
 
-  /* Nur Textarea-spezifisch */
-  .input-group textarea {
-    resize: vertical; /* Lässt den Nutzer die Höhe ändern, aber nicht die Breite sprengen */
+/* Nur Textarea-spezifisch */
+.input-group textarea {
+    resize: vertical;
+    /* Lässt den Nutzer die Höhe ändern, aber nicht die Breite sprengen */
     min-height: 100px;
-  }
+}
 
-  .input-group input:focus,
-  .input-group textarea:focus {
+.input-group input:focus,
+.input-group textarea:focus {
     outline: none;
     border-color: #FF8C00;
     background-color: #ffffff;
     box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.15);
-  }
+}
 
-  /* Button */
-  .auth-submit {
+/* Button */
+.auth-submit {
     width: 100%;
     margin-top: 12px;
     padding: 14px;
@@ -821,73 +911,426 @@ main {
     font-weight: bold;
     cursor: pointer;
     transition: opacity 0.3s ease, transform 0.1s ease;
-  }
+}
 
-  .auth-submit:hover {
+.auth-submit:hover {
     opacity: 0.9;
-  }
+}
 
-  .auth-submit:active {
+.auth-submit:active {
     transform: scale(0.98);
-  }
+}
 
-  /* Footer */
-  .auth-footer {
+/* Footer */
+.auth-footer {
     margin-top: 28px;
     text-align: center;
     font-size: 14px;
     color: #666666;
-  }
+}
 
-  .auth-footer a {
+.auth-footer a {
     color: #FF8C00;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
-  }
+}
 
-  .auth-footer a:hover {
+.auth-footer a:hover {
     color: #8E44AD;
-  }
+}
 
-  /* Responsive Design für Smartphones */
-  @media (max-width: 480px) {
+/* Responsive Design für Smartphones */
+@media (max-width: 480px) {
     .input-row {
-      flex-direction: column; /* Stapelt Vor- und Nachname auf kleinen Screens */
-      gap: 0;
+        flex-direction: column;
+        /* Stapelt Vor- und Nachname auf kleinen Screens */
+        gap: 0;
     }
-  }
+}
 
-  .user-menu {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 16px;
 }
 
 .user-greeting {
-  font-weight: 600;
-  color: #1a1a1a; /* Bzw. #ffffff, falls deine Navbar dunkel ist */
+    font-weight: 600;
+    color: #1a1a1a;
+    /* Bzw. #ffffff, falls deine Navbar dunkel ist */
 }
 
 .inline-form {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .logout-button {
-  background-color: transparent;
-  color: #666666;
-  border: 1px solid #cccccc;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
+    background-color: transparent;
+    color: #666666;
+    border: 1px solid #cccccc;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
 .logout-button:hover {
-  background-color: #fce8e8;
-  color: #d32f2f; /* Leichtes Rot als Warnung beim Logout */
-  border-color: #d32f2f;
+    background-color: #fce8e8;
+    color: #d32f2f;
+    /* Leichtes Rot als Warnung beim Logout */
+    border-color: #d32f2f;
+}
+
+.pending-content {
+    /* WICHTIG: Keine Hintergrundfarbe, kein Schatten, kein Rahmen! */
+    max-width: 650px;
+    margin: 6rem auto 8rem auto;
+    /* Schafft Luft nach oben und unten */
+    padding: 0 1.5rem;
+    text-align: center;
+}
+
+.icon-container {
+    display: inline-block;
+    color: #ff6b00;
+    /* Deine Akzentfarbe (z.B. Orange) - ggf. anpassen */
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+    /* Größer, wirkt jetzt wie eine echte Seitenüberschrift */
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    /* Farbe wird automatisch aus deiner globalen app.css geerbt! */
+}
+
+p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: #666;
+    /* Dezentes Grau, im Dark Mode ggf. anpassen */
+    margin-bottom: 3rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-home {
+    display: inline-block;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    /* Schlichter Outline-Button, der sich ans Design anpasst */
+    color: inherit;
+    border: 2px solid currentColor;
+    transition: opacity 0.2s ease;
+}
+
+.btn-home:hover {
+    opacity: 0.6;
+}
+
+/* Dark Mode Anpassung für den Fließtext */
+@media (prefers-color-scheme: dark) {
+    p {
+        color: #a0a0a0;
+    }
+}
+
+/* ========================================== */
+/* HOME UPDATES: TRACKER IM FOKUS             */
+/* ========================================== */
+
+/* Fließender Haupt-Button im Hero */
+.btn-pulse {
+    /* Der 3-teilige Gradient für einen nahtlosen Loop */
+    background: linear-gradient(90deg, #4f46e5, #ec4899, #4f46e5);
+    background-size: 200% auto;
+    color: white;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+
+    /* Hier rufen wir unsere existierende Durchlauf-Animation auf */
+    animation: flowGradient 5s linear infinite;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-pulse:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
+}
+
+
+/* Die Tracker-Feature Karte über die volle Breite */
+/* Macht die Link-Karten zu ganz normalen Blöcken ohne blauen Text */
+a.feature-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    /* Wichtig, damit das <a> Tag die volle Breite nutzt */
+    position: relative;
+    /* Wichtig für unseren Rahmen-Trick */
+}
+
+/* Der magische Gradient-Rahmen (Startet unsichtbar) */
+.feature-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    /* Muss dem Radius der Karte entsprechen */
+    background: linear-gradient(45deg, #4f46e5, #ec4899) border-box;
+    -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    /* Im Normalzustand unsichtbar */
+    transition: opacity 0.3s ease;
+    /* Weicher Übergang */
+}
+
+/* Sobald die Maus über die Karte fährt, wird der Rahmen sanft eingeblendet */
+.feature-card:hover::after {
+    opacity: 1;
+}
+
+a.tracker-feature {
+    grid-column: 1 / -1;
+    /* Nimmt die gesamte Breite des Grids ein */
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    background: linear-gradient(135deg, #ffffff, #f8fafc);
+    border: 2px solid #eef2ff;
+    position: relative;
+    overflow: hidden;
+}
+
+.tracker-info h3 {
+    font-size: 1.8rem;
+    padding-bottom: 0.5rem;
+    background: linear-gradient(90deg, #0f172a, #4f46e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* ========================================== */
+/* ANIMIERTE PERSONENWAAGE                    */
+/* ========================================== */
+.scale-wrapper {
+    flex-shrink: 0;
+    animation: floatScale 4s ease-in-out infinite;
+    margin-left: 1rem;
+}
+
+.scale-body {
+    width: 140px;
+    height: 140px;
+    background: #f1f5f9;
+    border-radius: 24px;
+    border: 6px solid #cbd5e1;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    position: relative;
+    box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.05), 0 15px 25px rgba(0, 0, 0, 0.1);
+}
+
+.scale-window {
+    background: #0f172a;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 3px solid #94a3b8;
+    height: max-content;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.scale-value {
+    font-family: 'Courier New', monospace;
+    font-weight: 900;
+    font-size: 1.5rem;
+
+    /* Der Gradient-Hintergrund (blau zu pink zu blau für einen nahtlosen Loop) */
+    background: linear-gradient(90deg, #4f46e5, #ec4899, #4f46e5);
+    background-size: 200% auto;
+
+    /* Legt den Hintergrund in die Form der Schrift und macht die eigentliche Schrift unsichtbar */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /* Startet die flüssige Durchlauf-Animation */
+    animation: flowGradient 3s linear infinite;
+}
+
+/* Die kleinen Standfüße der Waage */
+.scale-foot {
+    position: absolute;
+    bottom: -12px;
+    width: 20px;
+    height: 8px;
+    background: #94a3b8;
+    border-radius: 0 0 4px 4px;
+}
+
+.scale-foot.left {
+    left: 20px;
+}
+
+.scale-foot.right {
+    right: 20px;
+}
+
+@keyframes floatScale {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes flowGradient {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 200% center;
+    }
+}
+
+/* ========================================== */
+/* RESPONSIVE ANPASSUNGEN                     */
+/* ========================================== */
+@media (max-width: 768px) {
+    a.tracker-feature {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+    }
+
+    .scale-wrapper {
+        margin-left: 0;
+    }
+}
+
+
+/* ========================================== */
+/* MODERN FOOTER                              */
+/* ========================================== */
+.modern-footer {
+    background-color: #0f172a; /* Ein tiefes, edles Dunkelblau/Grau */
+    color: #f8fafc;
+    margin-top: auto;
+    position: relative;
+}
+
+/* Die feine Gradient-Linie oben auf dem Footer */
+.modern-footer::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #4f46e5, #ec4899);
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 20px 2rem 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Brand bekommt mehr Platz, Links weniger */
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.footer-logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.footer-brand p {
+    color: #94a3b8;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    max-width: 400px;
+}
+
+.footer-links h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.footer-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 0.95rem;
+    display: inline-block;
+}
+
+/* Beim Hovern schiebt sich der Link leicht nach rechts und wird farbig */
+.footer-links a:hover {
+    color: #ec4899; /* Deine Pinke Akzentfarbe */
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    color: #64748b;
+    font-size: 0.85rem;
+}
+
+/* ========================================== */
+/* RESPONSIVE FOOTER                          */
+/* ========================================== */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr; /* Auf Handys alles untereinander */
+        gap: 2rem;
+    }
+    
+    .footer-brand p {
+        max-width: 100%;
+    }
 }
