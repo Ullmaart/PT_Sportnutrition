@@ -1,26 +1,42 @@
-/* --- CSS Variablen --- */
+/* ========================================== */
+/* CSS Variablen */
+/* ========================================== */
 :root {
     --pt-purple: #7c2ae8;
     --pt-orange: #ff7e00;
     --pt-gradient: linear-gradient(135deg, var(--pt-purple) 0%, var(--pt-orange) 100%);
 
     --pt-surface: #ffffff;
+    --pt-surface-soft: #fafafa;
+    --pt-surface-muted: #f8fafc;
     --pt-text-main: #1f2937;
     --pt-text-light: #6b7280;
     --pt-border: #e5e7eb;
 
-    --font-main: 'Inter', system-ui, sans-serif;
+    --pt-danger: #ef4444;
+    --pt-danger-soft: #fee2e2;
+    --pt-success: #16a34a;
+    --pt-success-soft: #dcfce7;
+
+    --font-main: "Inter", system-ui, sans-serif;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --shadow-card: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.04);
 }
 
-/* --- Layout --- */
+/* ========================================== */
+/* Layout */
+/* ========================================== */
 .unified-tracker {
     display: grid;
     grid-template-columns: 420px 1fr;
     max-width: 1200px;
     margin: 2rem auto;
     background: var(--pt-surface);
-    border-radius: 16px;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
     overflow: hidden;
     font-family: var(--font-main);
     color: var(--pt-text-main);
@@ -32,11 +48,17 @@
     grid-template-columns: 60px 1fr;
 }
 
-/* --- Linkes Panel (Eingabe) --- */
+.goals-section {
+    margin-top: 2rem;
+}
+
+/* ========================================== */
+/* Linkes Panel */
+/* ========================================== */
 .input-panel {
     padding: 2.5rem;
     border-right: 1px solid var(--pt-border);
-    background: #fafafa;
+    background: var(--pt-surface-soft);
     display: flex;
     flex-direction: column;
 }
@@ -45,6 +67,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     margin-bottom: 2rem;
 }
 
@@ -60,18 +83,27 @@
     font-size: 1.2rem;
     color: var(--pt-text-light);
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
 }
 
 .btn-toggle-close:hover {
     color: var(--pt-purple);
+    background: #f3f4f6;
 }
 
-/* --- Formularelemente & Datepicker --- */
+/* ========================================== */
+/* Formularelemente */
+/* ========================================== */
 .input-group {
     display: flex;
     flex-direction: column;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .panel-label {
@@ -84,24 +116,29 @@
 .date-picker {
     padding: 0.75rem 1rem;
     border: 1px solid var(--pt-border);
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     font-family: var(--font-main);
     font-size: 1rem;
     color: var(--pt-text-main);
     background: white;
     outline: none;
-    transition: border-color 0.2s;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    min-height: 44px;
 }
 
 .date-picker:focus {
     border-color: var(--pt-purple);
+    box-shadow: 0 0 0 3px rgba(124, 42, 232, 0.12);
 }
 
-/* --- Gewicht Controls --- */
+/* ========================================== */
+/* Gewicht Controls */
+/* ========================================== */
 .weight-controls {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
     margin-bottom: 1rem;
 }
 
@@ -109,6 +146,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.weight-input-line {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.25rem;
+}
+
+.kg-label {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--pt-text-main);
 }
 
 .main-weight {
@@ -123,14 +173,43 @@
 }
 
 .weight-delta.negative {
-    color: #ef4444;
+    color: var(--pt-danger);
 }
 
 .weight-delta.positive {
     color: #3b82f6;
 }
 
-/* --- Gradient Buttons --- */
+.manual-weight-input {
+    background: transparent;
+    border: none;
+    border-bottom: 2px dashed #9ca3af;
+    color: var(--pt-text-main);
+    text-align: center;
+    width: 100px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.manual-weight-input:focus {
+    border-bottom: 2px solid var(--pt-purple);
+}
+
+.manual-weight-input::-webkit-outer-spin-button,
+.manual-weight-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.manual-weight-input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/* ========================================== */
+/* Buttons */
+/* ========================================== */
 .btn-grad {
     background: var(--pt-gradient);
     color: white;
@@ -140,35 +219,39 @@
 }
 
 .btn-grad:hover {
-    opacity: 0.9;
+    opacity: 0.92;
     transform: translateY(-2px);
 }
 
 .btn-adjust {
     border-radius: 9999px;
-    padding: 0.5rem 1.25rem;
+    padding: 0.65rem 1.25rem;
     font-weight: 700;
     box-shadow: 0 4px 6px -1px rgba(255, 126, 0, 0.2);
+    min-height: 44px;
 }
 
 .btn-confirm {
     width: 100%;
     border-radius: 9999px;
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 800;
     text-transform: uppercase;
     box-shadow: 0 4px 10px -2px rgba(124, 42, 232, 0.3);
+    min-height: 48px;
 }
 
-/* --- Finales Gewicht (Gelbe Box) --- */
+/* ========================================== */
+/* Finales Gewicht */
+/* ========================================== */
 .final-weight-box {
     background-color: #fef9c3;
     color: #854d0e;
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     text-align: center;
-    margin: 1.5rem 0 2rem 0;
+    margin: 1.25rem 0 1.75rem 0;
     border: 1px solid #fde047;
 }
 
@@ -179,7 +262,9 @@
     text-underline-offset: 4px;
 }
 
-/* --- Ausgeblendeter Zustand --- */
+/* ========================================== */
+/* Eingabe eingeklappt */
+/* ========================================== */
 .input-collapsed-box {
     background: var(--pt-gradient);
     border: none;
@@ -187,9 +272,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     padding: 1.5rem 0;
     color: white;
-    transition: opacity 0.2s;
+    transition: opacity 0.2s ease;
+    min-height: 100%;
 }
 
 .input-collapsed-box:hover {
@@ -208,7 +295,9 @@
     letter-spacing: 2px;
 }
 
-/* --- Rechtes Panel (Historie) --- */
+/* ========================================== */
+/* Rechtes Panel */
+/* ========================================== */
 .history-panel {
     padding: 2.5rem;
     background: var(--pt-surface);
@@ -218,7 +307,8 @@
     font-size: 1.75rem;
     font-weight: 800;
     margin-top: 0;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
 }
 
 .history-list {
@@ -231,11 +321,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.25rem 0;
+    padding: 1rem 0;
     border-bottom: 1px dashed var(--pt-border);
-    font-size: 1.1rem;
+    font-size: 1rem;
     min-height: 4rem;
-    /* Verhindert Springen beim Wechseln in den Edit-Mode */
 }
 
 .history-item:last-child {
@@ -247,20 +336,146 @@
     font-weight: 500;
 }
 
+.history-item .weight {
+    font-weight: 700;
+}
+
 .history-right {
     display: flex;
     align-items: center;
     gap: 1.5rem;
 }
 
-.history-item .weight {
-    font-weight: 700;
+/* ========================================== */
+/* History Grid */
+/* ========================================== */
+.history-row-grid {
+    display: grid;
+    grid-template-columns: 100px 90px 1fr 80px 80px;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 1rem;
 }
 
-/* --- Interaktive Buttons für Einträge --- */
+.history-date-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.history-weight-block {
+    font-size: 1rem;
+}
+
+.goal-col {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.trend-col {
+    font-weight: 800;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
+.sub-info {
+    display: block;
+    margin-top: 0.2rem;
+    color: var(--pt-text-light);
+    font-size: 0.88rem;
+}
+
+/* ========================================== */
+/* Aktive Phase / Goal-Farbe */
+/* ========================================== */
+.mobile-card {
+    display: block;
+}
+
+.history-item.goal-active {
+    background: color-mix(in srgb, var(--goal-color), white 94%);
+    border-left: 4px solid var(--goal-color);
+    padding-left: 0.75rem;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+}
+
+.phase-pill {
+    display: inline-flex;
+    width: fit-content;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--goal-color), white 86%);
+    color: color-mix(in srgb, var(--goal-color), black 45%);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+/* ========================================== */
+/* Goal Cards */
+/* ========================================== */
+.history-item.goal-card {
+    display: block;
+    padding: 1rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid color-mix(in srgb, var(--goal-color), white 76%);
+    border-left: 4px solid var(--goal-color);
+    background: color-mix(in srgb, var(--goal-color), white 92%);
+    box-shadow: var(--shadow-soft);
+}
+
+.goal-card-inner {
+    width: 100%;
+}
+
+.goal-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    width: 100%;
+}
+
+.goal-title-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.goal-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.goal-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: color-mix(in srgb, var(--goal-color), black 45%);
+}
+
+.goal-range {
+    font-size: 0.9rem;
+    color: var(--pt-text-light);
+}
+
+.goal-target {
+    font-size: 1rem;
+    white-space: nowrap;
+    color: color-mix(in srgb, var(--goal-color), black 35%);
+}
+
+/* ========================================== */
+/* Item Actions */
+/* ========================================== */
 .item-actions {
     display: flex;
     gap: 0.5rem;
+}
+
+.item-actions form {
+    margin: 0;
 }
 
 .btn-action {
@@ -268,10 +483,15 @@
     border: none;
     cursor: pointer;
     font-size: 1rem;
-    padding: 0.4rem;
-    border-radius: 6px;
-    transition: background 0.2s, color 0.2s;
+    padding: 0.5rem;
+    border-radius: 10px;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
     line-height: 1;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-edit {
@@ -288,8 +508,8 @@
 }
 
 .btn-delete:hover {
-    background: #fee2e2;
-    color: #ef4444;
+    background: var(--pt-danger-soft);
+    color: var(--pt-danger);
 }
 
 .btn-save {
@@ -298,8 +518,8 @@
 }
 
 .btn-save:hover {
-    background: #dcfce7;
-    color: #16a34a;
+    background: var(--pt-success-soft);
+    color: var(--pt-success);
 }
 
 .btn-cancel {
@@ -311,7 +531,9 @@
     color: var(--pt-text-main);
 }
 
-/* --- Inline Edit Layout --- */
+/* ========================================== */
+/* Edit Layout */
+/* ========================================== */
 .edit-row {
     display: flex;
     width: 100%;
@@ -321,7 +543,7 @@
 }
 
 .inline-edit {
-    padding: 0.4rem 0.75rem;
+    padding: 0.6rem 0.75rem;
     font-size: 1rem;
     max-width: 160px;
 }
@@ -342,58 +564,10 @@
     color: var(--pt-text-light);
 }
 
-/* --- Responsive Media Queries --- */
-@media (max-width: 900px) {
-
-    .unified-tracker,
-    .unified-tracker.input-hidden {
-        grid-template-columns: 1fr;
-        margin: 1rem;
-        min-height: auto;
-    }
-
-    .input-panel {
-        border-right: none;
-        border-bottom: 1px solid var(--pt-border);
-        padding: 1.5rem;
-    }
-
-    .history-panel {
-        padding: 1.5rem;
-    }
-
-    .input-collapsed-box {
-        flex-direction: row;
-        justify-content: center;
-        gap: 1rem;
-        padding: 1rem;
-    }
-
-    .collapsed-text {
-        writing-mode: horizontal-tb;
-        transform: none;
-    }
-
-    .edit-row {
-        flex-wrap: wrap;
-    }
-}
-
-
-.history-row-grid {
-    display: grid;
-    /* 5 Spalten: Datum (100px), Gewicht (90px), Ziel (Restlicher Platz), Trend (80px), Buttons (80px) */
-    grid-template-columns: 100px 90px 1fr 80px 80px;
-    align-items: center;
-    width: 100%;
-    gap: 1rem;
-    font-size: 1rem;
-}
-
 .edit-goal-form {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
+    gap: 0.75rem;
     width: 100%;
     align-items: center;
 }
@@ -403,35 +577,9 @@
     min-width: 80px;
 }
 
-.goal-col {
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.trend-col {
-    font-weight: 800;
-    font-size: 0.95rem;
-    text-align: right;
-}
-
-.history-item {
-    padding: 1rem 0;
-}
-
-/* Mobile Anpassung: Umbruch auf 2 Spalten auf kleinen Bildschirmen */
-@media (max-width: 768px) {
-    .history-row-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-    }
-    .goal-col {
-        grid-column: span 2;
-    }
-    .trend-col {
-        text-align: left;
-    }
-}
-
+/* ========================================== */
+/* Color Picker */
+/* ========================================== */
 .color-picker-container {
     display: flex;
     flex-wrap: wrap;
@@ -446,8 +594,7 @@
     border: 3px solid transparent;
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.2s ease;
-    /* Optional: Ein leichter Schatten macht die Pastelltöne besser sichtbar */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .color-dot:hover {
@@ -456,21 +603,19 @@
 
 .color-dot.selected {
     transform: scale(1.15);
-    /* Ein grauer Rahmen zeigt an, welche Farbe aktiv ist */
-    border-color: #4b5563; 
+    border-color: #4b5563;
 }
 
 /* ========================================== */
-/* FILTER-BAR & PAGINATION                    */
+/* Filter & Pagination */
 /* ========================================== */
-
 .filter-bar {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--pt-surface-muted);
     padding: 1rem;
-    border-radius: 8px;
+    border-radius: var(--radius-sm);
     margin-bottom: 1.5rem;
     align-items: center;
 }
@@ -493,28 +638,25 @@
 
 .filter-input {
     border: 2px solid transparent;
-    border-radius: 8px;
-    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    padding: 0.65rem 0.75rem;
     color: #322842;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     outline: none;
-    
-    /* Der Gradienten-Rahmen Trick mit deutlich hellerem Grau (#374151) für innen */
-    background: 
-        linear-gradient(#f4f4f4, #f4f4f4) padding-box, 
-        linear-gradient(to right, #f97316, #a855f7) border-box; 
-    
+    min-height: 44px;
+    background:
+        linear-gradient(#f4f4f4, #f4f4f4) padding-box,
+        linear-gradient(to right, #f97316, #a855f7) border-box;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .filter-input:focus {
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4); 
-    transform: translateY(-1px); 
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
+    transform: translateY(-1px);
 }
 
-/* Auch das Dropdown-Menü bekommt das neue, hellere Grau */
 .select-input option {
-    background: #374151; 
+    background: #374151;
     color: #fff;
 }
 
@@ -522,9 +664,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     margin-top: 1.5rem;
     padding-top: 1rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid var(--pt-border);
 }
 
 .pagination-info {
@@ -538,32 +681,351 @@
     cursor: not-allowed;
 }
 
-.manual-weight-input {
-    background: transparent;
-    border: none;
-    /* Dunkelgraue, gestrichelte Linie statt einer weißen */
-    border-bottom: 2px dashed #9ca3af; 
-    /* Dunkle Schriftfarbe statt weiß */
-    color: #1f2937; 
-    text-align: center;
-    width: 100px;
-    padding: 0;
-    margin: 0;
-    outline: none;
-    transition: border-color 0.2s ease;
+/* ========================================== */
+/* Empty State */
+/* ========================================== */
+.empty-state {
+    display: block;
+    padding: 1rem 0;
+    text-align: left;
 }
 
-.manual-weight-input:focus {
-    /* Deine Primärfarbe als durchgehende Linie beim Reinklicken */
-    border-bottom: 2px solid var(--pt-purple); 
+/* ========================================== */
+/* Tablet */
+/* ========================================== */
+@media (max-width: 900px) {
+    .unified-tracker,
+    .unified-tracker.input-hidden {
+        grid-template-columns: 1fr;
+        margin: 1rem;
+        min-height: auto;
+    }
+
+    .input-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--pt-border);
+        padding: 1.5rem;
+    }
+
+    .history-panel {
+        padding: 1.5rem;
+    }
+
+    .input-collapsed-box {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .collapsed-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+    }
+
+    .edit-row {
+        flex-wrap: wrap;
+    }
 }
 
-/* Pfeile verstecken (bleibt gleich) */
-.manual-weight-input::-webkit-outer-spin-button,
-.manual-weight-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+/* ========================================== */
+/* Mobile */
+/* ========================================== */
+@media (max-width: 768px) {
+    .unified-tracker,
+    .unified-tracker.input-hidden {
+        grid-template-columns: 1fr;
+        margin: 0.75rem;
+        border-radius: 18px;
+        min-height: auto;
+    }
+
+    .input-panel,
+    .history-panel {
+        padding: 1rem;
+    }
+
+    .input-panel {
+        border-right: none;
+        border-bottom: 1px solid var(--pt-border);
+    }
+
+    .panel-header {
+        margin-bottom: 1.25rem;
+    }
+
+    .section-title,
+    .page-title {
+        line-height: 1.2;
+    }
+
+    .page-title {
+        font-size: 1.35rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .input-group {
+        margin-bottom: 1.1rem;
+    }
+
+    .weight-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .btn-adjust {
+        width: 100%;
+        border-radius: 14px;
+        padding: 0.9rem 1rem;
+        font-size: 0.95rem;
+    }
+
+    .weight-display-group {
+        order: -1;
+        background: #fff;
+        border: 1px solid var(--pt-border);
+        border-radius: var(--radius-lg);
+        padding: 1rem 0.75rem;
+    }
+
+    .main-weight {
+        font-size: 1.5rem;
+    }
+
+    .manual-weight-input {
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        font-size: 1.6rem;
+    }
+
+    .final-weight-box {
+        margin: 1rem 0 1.25rem 0;
+        padding: 0.9rem;
+    }
+
+    .final-weight {
+        font-size: 1.7rem;
+    }
+
+    .input-collapsed-box {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0.9rem 1rem;
+    }
+
+    .collapsed-text {
+        writing-mode: horizontal-tb;
+        transform: none;
+        letter-spacing: 1px;
+    }
+
+    .filter-bar {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 0.85rem;
+        margin-bottom: 1rem;
+    }
+
+    .filter-group {
+        min-width: 0;
+    }
+
+    .filter-group label {
+        font-size: 0.75rem;
+    }
+
+    .filter-input {
+        width: 100%;
+        font-size: 0.95rem;
+        padding: 0.75rem 0.85rem;
+    }
+
+    .history-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.85rem;
+    }
+
+    .history-item {
+        display: block;
+        padding: 1rem;
+        border: 1px solid var(--pt-border);
+        border-radius: var(--radius-lg);
+        background: #fff;
+        min-height: auto;
+        box-shadow: var(--shadow-soft);
+    }
+
+    .history-row-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+
+    .history-item .date {
+        font-size: 0.9rem;
+    }
+
+    .history-item .weight {
+        font-size: 1.2rem;
+        font-weight: 800;
+    }
+
+    .goal-col,
+    .trend-col {
+        text-align: left;
+        font-size: 0.92rem;
+    }
+
+    .goal-col {
+        background: var(--pt-surface-muted);
+        border-radius: var(--radius-md);
+        padding: 0.75rem;
+    }
+
+    .trend-col {
+        font-weight: 700;
+    }
+
+    .item-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        width: 100%;
+        margin-top: 0.25rem;
+    }
+
+    .item-actions form {
+        width: 100%;
+    }
+
+    .btn-action {
+        width: 100%;
+        border: 1px solid var(--pt-border);
+        background: #fff;
+        border-radius: var(--radius-md);
+    }
+
+    .edit-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        align-items: stretch;
+    }
+
+    .inline-edit {
+        max-width: none;
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .inline-weight-input {
+        width: 100%;
+        justify-content: space-between;
+        border: 1px solid var(--pt-border);
+        border-radius: var(--radius-md);
+        padding-right: 0.85rem;
+        background: #fff;
+    }
+
+    .inline-weight-input .inline-edit {
+        border: none;
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .pagination-controls {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        text-align: center;
+    }
+
+    .pagination-controls button {
+        width: 100% !important;
+        padding: 0.85rem 1rem !important;
+        min-height: 44px;
+    }
+
+    .pagination-info {
+        order: -1;
+    }
+
+    .edit-goal-form {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .edit-goal-form input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .color-picker-container {
+        gap: 0.75rem;
+    }
+
+    .color-dot {
+        width: 34px;
+        height: 34px;
+    }
+
+    .goal-head,
+    .goal-meta {
+        gap: 0.75rem;
+    }
 }
-.manual-weight-input[type=number] {
-    -moz-appearance: textfield;
+
+/* ========================================== */
+/* Small Mobile */
+/* ========================================== */
+@media (max-width: 480px) {
+    .unified-tracker,
+    .unified-tracker.input-hidden {
+        margin: 0.5rem;
+        border-radius: 14px;
+    }
+
+    .input-panel,
+    .history-panel {
+        padding: 0.85rem;
+    }
+
+    .page-title {
+        font-size: 1.2rem;
+    }
+
+    .section-title {
+        font-size: 1.05rem;
+    }
+
+    .main-weight {
+        font-size: 1.3rem;
+    }
+
+    .manual-weight-input {
+        font-size: 1.4rem;
+        max-width: 130px;
+    }
+
+    .final-weight {
+        font-size: 1.45rem;
+    }
+
+    .history-item .weight {
+        font-size: 1.08rem;
+    }
+
+    .btn-confirm {
+        font-size: 1rem;
+        padding: 0.9rem;
+    }
 }

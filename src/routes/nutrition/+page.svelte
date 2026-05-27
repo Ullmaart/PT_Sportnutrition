@@ -7,7 +7,7 @@
 
 <div class="page-container">
     <header class="page-header">
-        <h1>Nutrition</h1>
+        <h1 class="gradient-text">Nutrition</h1>
         <p>Deine tägliche Nährwertübersicht</p>
     </header>
 

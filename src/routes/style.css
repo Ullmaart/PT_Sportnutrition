@@ -94,6 +94,172 @@ body {
     width: 100%;
 }
 
+.nav-action {
+    display: flex;
+    align-items: center;
+}
+
+.mobile-nav-trigger {
+    display: none;
+}
+
+body.menu-open {
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: 64px;
+    }
+
+    .nav-container {
+        padding: 0 16px;
+    }
+
+    .desktop-nav,
+    .desktop-action {
+        display: none;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    .mobile-nav-trigger {
+        display: flex;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        width: 64px;
+        height: 64px;
+        border: none;
+        border-radius: 999px;
+        background: linear-gradient(135deg, #4f46e5, #ec4899);
+        box-shadow: 0 12px 30px rgba(79, 70, 229, 0.35);
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 3000;
+        padding: 0;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .mobile-nav-trigger:hover {
+        transform: scale(1.05);
+        box-shadow: 0 16px 35px rgba(79, 70, 229, 0.4);
+    }
+
+    .mobile-nav-trigger-logo {
+        width: 32px;
+        height: 32px;
+        object-fit: contain;
+        filter: brightness(0) invert(1);
+    }
+
+    .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 2500;
+        background:
+            linear-gradient(135deg, rgba(15, 23, 42, 0.98), rgba(30, 41, 59, 0.96));
+        backdrop-filter: blur(14px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+    }
+
+    .mobile-menu-inner {
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+        min-height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 32px;
+    }
+
+    .mobile-menu-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-menu-brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: white;
+        font-size: 1.4rem;
+        font-weight: 800;
+    }
+
+    .mobile-menu-close {
+        width: 48px;
+        height: 48px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        color: white;
+        font-size: 1.4rem;
+        cursor: pointer;
+    }
+
+    .mobile-menu-links {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .mobile-menu-link {
+        color: white;
+        text-decoration: none;
+        font-size: 2rem;
+        font-weight: 700;
+        line-height: 1.1;
+        padding: 10px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-menu-bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .mobile-user-greeting {
+        color: rgba(255, 255, 255, 0.8);
+        margin: 0;
+        font-size: 1rem;
+    }
+
+    .mobile-auth-form {
+        margin: 0;
+    }
+
+    .mobile-login-button,
+    .mobile-logout-button {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 52px;
+        border-radius: 14px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        background: white;
+        color: #0f172a;
+    }
+
+    main {
+        padding-top: 16px;
+    }
+}
+
 .cta-button {
     background-color: #723fff;
     color: white;
@@ -1319,6 +1485,60 @@ a.tracker-feature {
     text-align: center;
     color: #64748b;
     font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+    .page-container,
+    .home-wrapper,
+    .footer-container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero {
+        padding: 40px 0;
+    }
+
+    .hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+        margin-bottom: 24px;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary,
+    .btn-pulse {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nutrition-card,
+    .sport-card,
+    .feature-card {
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    .card-footer {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .footer-container {
+        padding-top: 3rem;
+    }
 }
 
 /* ========================================== */
