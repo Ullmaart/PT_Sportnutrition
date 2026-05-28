@@ -114,6 +114,10 @@ body.menu-open {
 
     .nav-container {
         padding: 0 16px;
+
+        a{
+            margin: auto;
+        }
     }
 
     .desktop-nav,
@@ -917,7 +921,7 @@ main {
 /* Anpassung für den Anmelde-Button (bleibt gleich, knallt jetzt aber mehr) */
 .login-submit {
     width: 100%;
-    margin-top: 12px;
+    margin-top: 0px;
     padding: 14px;
     /* Dein bereits definierter Gradient */
     background-image: linear-gradient(45deg, #FF8C00 0%, #8E44AD 100%);
@@ -1493,6 +1497,10 @@ a.tracker-feature {
     .footer-container {
         padding-left: 16px;
         padding-right: 16px;
+    }
+
+    .home-wrapper{
+        padding-top: 0px;
     }
 
     .hero {
