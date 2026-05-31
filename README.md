@@ -16,7 +16,7 @@
     1. [6.1 KI-Tools](#61-ki-tools)
     2. [6.2 Prompt-Vorgehen](#62-prompt-vorgehen)
     3. [6.3 Reflexion](#63-reflexion)
-7. [Anhang [Optional]](#7-anhang)
+7. [Anhang](#7-anhang)
 
 ---
 
