@@ -16,7 +16,7 @@
     1. [6.1 KI-Tools](#61-ki-tools)
     2. [6.2 Prompt-Vorgehen](#62-prompt-vorgehen)
     3. [6.3 Reflexion](#63-reflexion)
-7. [Anhang [Optional]](#7-anhang-optional)
+7. [Anhang [Optional]](#7-anhang)
 
 ---
 
@@ -213,7 +213,7 @@ Ein klares Risiko war jedoch die Tendenz der KI-Modelle, veraltete Code-Struktur
 
 ---
 
-## 7. Anhang [Optional]
+## 7. Anhang
 
 - **Mockup:** [Figma Link](https://www.figma.com/design/WAWi3tm6D5igHu8kYbiRws/FitTrack?node-id=1-9&t=Epu5894aXzGM7rmd-1)
 - **Live-App:** [Netlify Deployment](https://ptsportnutrition.netlify.app)
